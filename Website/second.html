@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0">
+    <title>Document</title>
+    <style>body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial,sans-serif;
+    }
+    .title-bar{
+    position:absolute;
+    top: 20px;
+    font-size:24px;
+    font-weight: bold;
+    }
+    .center-button{
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+    }
+    .modal{
+        display:none;
+        position:fixed;
+        top:50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        padding: 20px;
+        background-color: white;
+        border:1px solid#ccc;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .modal input{
+        margin-bottom: 10px;
+    }
+    .overlay{
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }</style>
+</head>
+<body>
+<body>
+    <div class="title-bar">This is the second page</div>
+    <button class="center-button"onclick="goBack()">Go Back</button>
+    <button class="center-button"onClick="showModal()">Calculate</button>
+    
+    <div class="modal" id="modal">
+       <h3>Enter Your Year of Birth</h3> 
+       <input type="number" id="yearOfBirth" placeholder="Year of Birth">
+       <button onClick="calculateAge()">Calculate</button>
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <script>
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+        function showModal() {
+            document.getElementById('modal').style.display='block';
+            document.getElementById('overlay').style.display='block';
+        }
+        function hideModal() {
+            document.getElementById('modal').style.display='none';
+            document.getElementById('overlay').style.display='none';
+        }
+        function calculateAge() {
+            const yearOfBirth =document.getElementById('yearOfBirth').value
+;
+        const currentYear = newDate().getFullYear();
+        const age = currentYear-yearOfBirth;
+        alert('Your age is' + age + 'years.');
+        hideModal()
+        }
+        //Hide modal when clicking outside of it
+        document.getElementById('overlay').onclick = hideModal;
+    </script>
+</body>
+</html>

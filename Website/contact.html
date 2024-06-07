@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <link rel="stylesheet" href="style.css">
+ <style>
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.menu{
+    position: absolute;
+    top:20px;
+}
+.menu a{
+    margin: 0 10px;
+    text-decoration: none;
+    color: blue;
+}
+.center-button{
+    padding:10px 20px;
+    font-size:16px;
+}
+.modal{
+    display: none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    padding:20px;
+    background-color: white;
+    border:1px solid #ccc;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+.modal-input{
+    margin-bottom:10px;
+}
+.overlay{
+    display: none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+}
+ </style>
+</head>
+<body>
+   <div clas="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="second.html">Second Page</a>
+   </div> 
+   <h1>Contact Page</h1>
+   <button class="center-button"onclick="showModal()">Calculate Distance</button>
+
+   <div class="modal" id="modal">
+    <h3>Enter Distance in Kilometers</h3>
+    <input type="number" id="distanceKm" placeholder="Distance in Km">
+    <button onclick="calculateDistance()">Calculate</button>
+   </div>
+   <div class="overlay" id="overlay"></div>
+   <script>
+    function showModal() {
+        document.getElementById('modal').style.display ='none';
+        document.getElementById('overlay').style.display = 'none';
+    }
+    function hideModal() {
+        document.getElementById('modal').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+    function calculateDistance() {
+        const distanceKm = getElementById('distanceKm').value;
+     const distanceMiles = distanceKm * 0.621371;
+     alert('The distance is' + distanceMiles + 'miles');
+     hideModal();
+    }
+    //Hide modal when clickng outside of it
+    document.getElementById('overlay').onclick = hideModal;
+   </script>
+</body>
+</html>
